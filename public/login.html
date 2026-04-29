@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - AudioStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-headphones-alt"></i>
+                    <span>AudioStore</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="catalog.html" class="nav-link">Каталог</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                </nav>
+                <div class="header-actions">
+                    <a href="login.html" class="nav-link" id="authLink">Войти</a>
+                    <button class="menu-toggle" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login/Register Section -->
+    <section class="auth-page">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="switchTab('login')">Вход</button>
+                    <button class="auth-tab" onclick="switchTab('register')">Регистрация</button>
+                </div>
+
+                <!-- Login Form -->
+                <div class="auth-form active" id="loginForm">
+                    <h2>Вход в аккаунт</h2>
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="loginEmail">Email или логин</label>
+                            <input type="text" id="loginEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Пароль</label>
+                            <input type="password" id="loginPassword" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="rememberMe">
+                                <span>Запомнить меня</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Войти</button>
+                    </form>
+                    <div class="auth-divider">
+                        <span>или</span>
+                    </div>
+                    <div class="demo-accounts">
+                        <p>Демо-аккаунты:</p>
+                        <button class="btn btn-secondary btn-sm" onclick="fillDemoAccount('buyer')">
+                            Покупатель (buyer / 123456)
+                        </button>
+                        <button class="btn btn-secondary btn-sm" onclick="fillDemoAccount('seller')">
+                            Продавец (demo_seller / DemoSeller123!)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Register Form -->
+                <div class="auth-form" id="registerForm">
+                    <h2>Создать аккаунт</h2>
+                    <form onsubmit="handleRegister(event)">
+                        <div class="form-group">
+                            <label for="regName">Имя</label>
+                            <input type="text" id="regName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regEmail">Email</label>
+                            <input type="email" id="regEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regLogin">Логин</label>
+                            <input type="text" id="regLogin" name="login" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPassword">Пароль</label>
+                            <input type="password" id="regPassword" name="password" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="regPasswordConfirm">Подтвердите пароль</label>
+                            <input type="password" id="regPasswordConfirm" name="passwordConfirm" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userType">Тип аккаунта</label>
+                            <select id="userType" name="userType" required>
+                                <option value="buyer">Покупатель</option>
+                                <option value="seller">Продавец</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AudioStore</h3>
+                    <p>Ваш надежный партнер в мире аудиотехники</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">Доставка</a></li>
+                        <li><a href="#">Оплата</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Категории</h4>
+                    <ul>
+                        <li><a href="catalog.html?category=headphones">Наушники</a></li>
+                        <li><a href="catalog.html?category=speakers">Колонки</a></li>
+                        <li><a href="catalog.html?category=microphones">Микрофоны</a></li>
+                        <li><a href="catalog.html?category=amplifiers">Усилители</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@audiostore.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Примерная, 1</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AudioStore. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

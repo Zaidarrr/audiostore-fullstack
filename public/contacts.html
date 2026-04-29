@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - AudioStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-headphones-alt"></i>
+                    <span>AudioStore</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="catalog.html" class="nav-link">Каталог</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="contacts.html" class="nav-link active">Контакты</a>
+                </nav>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Поиск товаров...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="cart-icon" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <button class="user-btn" onclick="toggleUserMenu()">
+                            <i class="fas fa-user"></i>
+                            <span id="userName">Пользователь</span>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="profile.html"><i class="fas fa-user-circle"></i> Профиль</a>
+                            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Выйти</a>
+                        </div>
+                    </div>
+                    <a href="login.html" class="nav-link" id="authLink">Войти</a>
+                    <button class="menu-toggle" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contacts Section -->
+    <section class="contacts-page">
+        <div class="container">
+            <h1 class="page-title">Контакты</h1>
+            
+            <div class="contacts-layout">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Адрес</h3>
+                        <p>Москва, ул. Примерная, д. 1</p>
+                        <p>Торговый центр "АудиоМолл", 2 этаж</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Телефон</h3>
+                        <p>+7 (999) 123-45-67</p>
+                        <p>+7 (495) 123-45-67</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>info@audiostore.ru</p>
+                        <p>support@audiostore.ru</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Режим работы</h3>
+                        <p>Пн-Пт: 10:00 - 21:00</p>
+                        <p>Сб-Вс: 10:00 - 20:00</p>
+                    </div>
+                </div>
+
+                <div class="contact-form-section">
+                    <h2>Свяжитесь с нами</h2>
+                    <form class="contact-form" id="contactForm" onsubmit="handleContactForm(event)">
+                        <div class="form-group">
+                            <label for="name">Имя *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="map-section">
+                <h2>Как нас найти</h2>
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <p>Карта будет загружена здесь</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AudioStore</h3>
+                    <p>Ваш надежный партнер в мире аудиотехники</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">Доставка</a></li>
+                        <li><a href="#">Оплата</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Категории</h4>
+                    <ul>
+                        <li><a href="catalog.html?category=headphones">Наушники</a></li>
+                        <li><a href="catalog.html?category=speakers">Колонки</a></li>
+                        <li><a href="catalog.html?category=microphones">Микрофоны</a></li>
+                        <li><a href="catalog.html?category=amplifiers">Усилители</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@audiostore.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Примерная, 1</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AudioStore. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            updateAuthUI();
+        });
+        
+        function handleContactForm(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                message: formData.get('message')
+            };
+            
+            // В реальном приложении здесь был бы запрос на сервер
+            alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

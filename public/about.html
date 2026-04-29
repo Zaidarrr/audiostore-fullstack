@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас - AudioStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-headphones-alt"></i>
+                    <span>AudioStore</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="catalog.html" class="nav-link">Каталог</a>
+                    <a href="about.html" class="nav-link active">О нас</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                </nav>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Поиск товаров...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="cart-icon" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <button class="user-btn" onclick="toggleUserMenu()">
+                            <i class="fas fa-user"></i>
+                            <span id="userName">Пользователь</span>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="profile.html"><i class="fas fa-user-circle"></i> Профиль</a>
+                            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Выйти</a>
+                        </div>
+                    </div>
+                    <a href="login.html" class="nav-link" id="authLink">Войти</a>
+                    <button class="menu-toggle" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about-page">
+        <div class="container">
+            <h1 class="page-title">О нас</h1>
+            
+            <div class="about-content">
+                <div class="about-section">
+                    <h2>Добро пожаловать в AudioStore</h2>
+                    <p>AudioStore — это ведущий интернет-магазин аудиотехники, который предлагает широкий ассортимент качественных товаров для всех любителей звука. Мы работаем на рынке уже более 10 лет и за это время заслужили доверие тысяч клиентов.</p>
+                </div>
+
+                <div class="about-section">
+                    <h2>Наша миссия</h2>
+                    <p>Мы стремимся сделать качественный звук доступным каждому. Наша команда тщательно отбирает каждый товар, чтобы предложить вам только лучшее оборудование от проверенных производителей.</p>
+                </div>
+
+                <div class="about-section">
+                    <h2>Почему выбирают нас</h2>
+                    <div class="advantages-grid">
+                        <div class="advantage-card">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Официальные поставщики</h3>
+                            <p>Мы работаем напрямую с производителями, что гарантирует подлинность и качество товаров</p>
+                        </div>
+                        <div class="advantage-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Опытная команда</h3>
+                            <p>Наши консультанты помогут выбрать идеальное оборудование для ваших задач</p>
+                        </div>
+                        <div class="advantage-card">
+                            <i class="fas fa-award"></i>
+                            <h3>Гарантия качества</h3>
+                            <p>Все товары имеют официальную гарантию производителя</p>
+                        </div>
+                        <div class="advantage-card">
+                            <i class="fas fa-truck"></i>
+                            <h3>Быстрая доставка</h3>
+                            <p>Доставляем заказы по всей стране в кратчайшие сроки</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2>Наши достижения</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>10+</h3>
+                            <p>лет на рынке</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>50,000+</h3>
+                            <p>довольных клиентов</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>5,000+</h3>
+                            <p>товаров в каталоге</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>24/7</h3>
+                            <p>поддержка клиентов</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AudioStore</h3>
+                    <p>Ваш надежный партнер в мире аудиотехники</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">Доставка</a></li>
+                        <li><a href="#">Оплата</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Категории</h4>
+                    <ul>
+                        <li><a href="catalog.html?category=headphones">Наушники</a></li>
+                        <li><a href="catalog.html?category=speakers">Колонки</a></li>
+                        <li><a href="catalog.html?category=microphones">Микрофоны</a></li>
+                        <li><a href="catalog.html?category=amplifiers">Усилители</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@audiostore.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Примерная, 1</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AudioStore. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            updateAuthUI();
+        });
+    </script>
+</body>
+</html>

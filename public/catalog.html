@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - AudioStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-headphones-alt"></i>
+                    <span>AudioStore</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="catalog.html" class="nav-link active">Каталог</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                </nav>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Поиск товаров...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="cart-icon" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <button class="user-btn" onclick="toggleUserMenu()">
+                            <i class="fas fa-user"></i>
+                            <span id="userName">Пользователь</span>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="profile.html"><i class="fas fa-user-circle"></i> Профиль</a>
+                            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Выйти</a>
+                        </div>
+                    </div>
+                    <a href="login.html" class="nav-link" id="authLink">Войти</a>
+                    <button class="menu-toggle" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Catalog Section -->
+    <section class="catalog-page">
+        <div class="container">
+            <h1 class="page-title">Каталог товаров</h1>
+            
+            <div class="catalog-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <h3>Фильтры</h3>
+                    
+                    <div class="filter-group">
+                        <h4>Категория</h4>
+                        <label><input type="checkbox" value="headphones" class="category-filter"> Наушники</label>
+                        <label><input type="checkbox" value="speakers" class="category-filter"> Колонки</label>
+                        <label><input type="checkbox" value="microphones" class="category-filter"> Микрофоны</label>
+                        <label><input type="checkbox" value="amplifiers" class="category-filter"> Усилители</label>
+                        <label><input type="checkbox" value="accessories" class="category-filter"> Аксессуары</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Цена</h4>
+                        <div class="price-range">
+                            <div class="price-input-group">
+                                <label>От:</label>
+                                <div class="price-input-wrapper">
+                                    <button class="price-btn" onclick="adjustPrice('min', -1000)">−</button>
+                                    <input type="number" id="priceMinInput" min="0" max="100000" value="0" step="1000" onchange="updatePriceFromInput('min', this.value)">
+                                    <button class="price-btn" onclick="adjustPrice('min', 1000)">+</button>
+                                </div>
+                                <input type="range" id="priceMin" min="0" max="100000" value="0" step="1000" class="price-slider">
+                            </div>
+                            <div class="price-input-group">
+                                <label>До:</label>
+                                <div class="price-input-wrapper">
+                                    <button class="price-btn" onclick="adjustPrice('max', -1000)">−</button>
+                                    <input type="number" id="priceMaxInput" min="0" max="100000" value="100000" step="1000" onchange="updatePriceFromInput('max', this.value)">
+                                    <button class="price-btn" onclick="adjustPrice('max', 1000)">+</button>
+                                </div>
+                                <input type="range" id="priceMax" min="0" max="100000" value="100000" step="1000" class="price-slider">
+                            </div>
+                            <div class="price-display">
+                                <span id="priceMinValue">0</span> ₽ - <span id="priceMaxValue">100000</span> ₽
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Бренд</h4>
+                        <label><input type="checkbox" value="Sony" class="brand-filter"> Sony</label>
+                        <label><input type="checkbox" value="Bose" class="brand-filter"> Bose</label>
+                        <label><input type="checkbox" value="Sennheiser" class="brand-filter"> Sennheiser</label>
+                        <label><input type="checkbox" value="JBL" class="brand-filter"> JBL</label>
+                        <label><input type="checkbox" value="Audio-Technica" class="brand-filter"> Audio-Technica</label>
+                    </div>
+
+                    <button class="btn btn-secondary" onclick="resetFilters()">Сбросить фильтры</button>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="products-section">
+                    <div class="products-header">
+                        <p id="productsCount">Найдено товаров: 0</p>
+                        <select id="sortSelect" onchange="sortProducts()">
+                            <option value="default">По умолчанию</option>
+                            <option value="price-asc">Цена: по возрастанию</option>
+                            <option value="price-desc">Цена: по убыванию</option>
+                            <option value="name-asc">Название: А-Я</option>
+                            <option value="name-desc">Название: Я-А</option>
+                        </select>
+                    </div>
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Корзина</h2>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Корзина пуста</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span id="cartTotal">0 ₽</span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="checkout()">Оформить заказ</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AudioStore</h3>
+                    <p>Ваш надежный партнер в мире аудиотехники</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">Доставка</a></li>
+                        <li><a href="#">Оплата</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Категории</h4>
+                    <ul>
+                        <li><a href="catalog.html?category=headphones">Наушники</a></li>
+                        <li><a href="catalog.html?category=speakers">Колонки</a></li>
+                        <li><a href="catalog.html?category=microphones">Микрофоны</a></li>
+                        <li><a href="catalog.html?category=amplifiers">Усилители</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@audiostore.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Примерная, 1</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AudioStore. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/catalog.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            updateAuthUI();
+        });
+    </script>
+</body>
+</html>
