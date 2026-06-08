@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог — ProductGrid Demo | AudioStore</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Segoe UI", "Tahoma", "Geneva", "Verdana", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-zinc-950 font-sans text-zinc-100 antialiased">
+  <header class="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
+      <div>
+        <p class="text-sm font-medium text-emerald-400">AudioStore</p>
+        <h1 class="text-2xl font-bold text-white sm:text-3xl">Каталог аудиотехники</h1>
+      </div>
+      <a
+        href="catalog.html"
+        class="rounded-xl border border-zinc-700 px-4 py-2 text-sm text-zinc-300 transition hover:border-zinc-500 hover:text-white"
+      >
+        Основной каталог
+      </a>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <p id="productsCount" class="mb-8 text-sm text-zinc-400"></p>
+
+    <div
+      id="productGrid"
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    ></div>
+  </main>
+
+  <script src="js/components/ProductCard.js"></script>
+  <script src="js/components/ProductGrid.js"></script>
+  <script src="js/data/demoProducts.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      ProductGrid(demoProducts, "productGrid");
+      const countEl = document.getElementById("productsCount");
+      if (countEl) {
+        countEl.textContent = `Показано товаров: ${demoProducts.length}`;
+      }
+    });
+  </script>
+</body>
+</html>
